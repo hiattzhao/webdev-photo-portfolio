@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Timer</title>
+  <meta name="description" content="A simple timer">
+  <meta name="author" content="Hiatt Zhao">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <style>
+
+  button {
+    width: 30%;
+  }
+
+  @media (min-width: 1000px) {
+    .container {
+      width: 30%;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .container {
+      width: 50%;
+    }
+  }
+
+  @media (max-width: 479px) {
+    button {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 4em;
+    }
+
+    #logtext {
+      text-align: center;
+    }
+  }
+  </style>
+
+</head>
+  <body>
+    <div class="container">
+      <h1 id="timer"></h1>
+      <div>
+        <button type="button" name="button" id="toggle">Start</button>
+        <button type="button" name="button" id="reset">Reset</button>
+        <button type="button" name="button" id="log">Log</button>
+      </div>
+      <div id="logtext">
+      </div>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    var centiseconds = 0,
+      seconds = 0,
+      minutes = 0,
+      hours = 0;
+    var interval; //interval ID
+    var toggleBtn = document.getElementById('toggle');
+    var resetBtn = document.getElementById('reset');
+    var logBtn = document.getElementById('log');
+    var timer = document.getElementById('timer');
+    var logtext = document.getElementById('logtext');
+    var state = true; //toggle the state of the Start/Stop button
+    var lap = 0; //stores the number of laps
+    centiseconds = padding(centiseconds);
+    seconds = padding(seconds);
+    minutes = padding(minutes);
+    hours = padding(hours);
+    timer.textContent = hours + ':' + minutes + ':' + seconds + '.' + centiseconds; //sets initial time format
+
+    // Adding a 0 in front of single digits
+    function padding(t) {
+      if (t < 10) {
+        return t = '0' + t;
+      } else {
+        return t;
+      }
+    }
+
+    // Update the timer
+    function updateTimer(){
+      centiseconds++;
+      centiseconds = padding(centiseconds);
+      if (centiseconds >= 100) {
+        seconds++;
+        seconds = padding(seconds);
+        centiseconds = 0;
+      } else if (seconds >= 60) {
+        seconds = 0;
+        seconds = padding(seconds);
+        minutes++;
+        minutes = padding(minutes);
+      } else if (minutes >= 60) {
+        minutes = 0;
+        minutes = padding(minutes);
+        hours++;
+        hours = padding(hours);
+      }
+      timer.textContent = hours + ':' + minutes + ':' + seconds + '.' + centiseconds;
+    }
+
+    // Toggle Start/Stop button
+    toggleBtn.addEventListener('click', function() {
+      if (state === true) {
+        interval = setInterval(updateTimer, 10);
+        toggleBtn.textContent = "Stop";
+        state = false;
+      } else {
+        clearInterval(interval);
+        toggleBtn.textContent = "Start";
+        state = true;
+      }
+    }, false);
+
+    // Reset button
+    resetBtn.addEventListener('click', function(){
+      centiseconds = 0;
+      centiseconds = padding(centiseconds);
+      seconds = 0;
+      seconds = padding(seconds);
+      minutes = 0;
+      minutes = padding(minutes);
+      hours = 0;
+      hours = padding(hours);
+      timer.textContent = hours + ':' + minutes + ':' + seconds + '.' + centiseconds;;
+      clearInterval(interval);
+      state = true;
+      toggleBtn.textContent = "Start";
+      lap = 0;
+      // Clear the log
+      while (logtext.hasChildNodes()) {
+        logtext.removeChild(logtext.lastChild);
+      }
+    }, false);
+
+    // Log button
+    logBtn.addEventListener('click', function() {
+      lap++; //counts the laps
+      var p = document.createElement('p');
+      p.innerHTML = 'Lap ' + lap + ': ' + timer.textContent;
+      logtext.appendChild(p);
+    }, false);
+
+  </script>
+</html>

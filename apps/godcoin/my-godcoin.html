@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>My Godcoin</title>
+  <meta name="description" content="My Godcoin">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <style>
+  @media (min-width: 1000px) {
+    .container {
+      width: 70%;
+    }
+  }
+
+  @media (min-width: 800px) {
+    .container {
+      width: 50%;
+    }
+  }
+  
+  </style>
+
+</head>
+  <body>
+    <div class="container">
+      
+      <h1><u><b>God</b>coin!</u></h1>
+      <h1>Your "God coin" is worth:</h1>
+      <h1>$<span id="seconds"></span></h1>
+      <h2>Chiacoin: <span id="minutes"></span></h2>
+      <h3>Ethereum:  <span id="hours"></span></h3>
+      <h4>Bitcoin: <span id="days"></span></h4>
+      <h5>My Godcoins mined so far: <span id="years"></span></h5>
+      <button onclick="closeWindow();return false;">Closing this window will stop mining.</button>
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    const birth_date = new Date();
+
+    let s = document.getElementById('seconds');
+    let m = document.getElementById('minutes');
+    let h = document.getElementById('hours');
+    let d = document.getElementById('days');
+    let y = document.getElementById('years');
+
+    setInterval(() => {
+      let millis = Date.now() - birth_date;
+      let seconds = Math.floor(millis / 1000);
+      let minutes = Math.floor(seconds / 60);
+      let hours = Math.floor(minutes / 60);
+      let days = Math.floor(hours / 24);
+      let years = days / 365.25;
+      
+      y.textContent = `${years.toLocaleString()}`;
+      d.textContent = `${days.toLocaleString()}`;
+      h.textContent = `${hours.toLocaleString()}`;
+      m.textContent = `${minutes.toLocaleString()}`;
+      s.textContent = `${seconds.toLocaleString()}`;
+    }, 1000);
+
+    function closeWindow() {
+      if (confirm("Are you sure you want to stop mining?")){
+        close();
+      }
+    }
+  </script>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Year Clock</title>
+    <meta name="description" content="A clock of the days of the year" />
+    <meta name="author" content="Hiatt Zhao" />
+
+    <!-- Mobile Specific Metas
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- FONT
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Abel"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Satisfy"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- CSS
+    –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/skeleton.css" />
+    <style>
+      body {
+        text-align: center;
+      }
+      #container {
+        margin: auto;
+        width: 600px;
+        padding: 10px;
+      }
+      /* Larger than mobile */
+      @media (max-width: 479px) {
+        #container {
+          width: 400px;
+        }
+        #svg {
+          width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body onload="draw();">
+    <div id="container">
+      <h1 id="title"></h1>
+      <h3>
+        <span id="days"></span> days (<span id="percent"></span>%) has passed
+        this year
+      </h3>
+      <div id="pie">
+        <svg id="svg" width="100%" height="600"></svg>
+      </div>
+    </div>
+    <script>
+      function draw() {
+        document.getElementById("title").innerHTML =
+          new Date().toLocaleDateString();
+
+        var now = new Date();
+        var currentNewYear = new Date(now.getFullYear(), 0, 1);
+        var currentDate = new Date(
+          now.getFullYear(),
+          now.getMonth(),
+          now.getDate()
+        );
+
+        var days = Math.ceil((currentDate - currentNewYear) / 8.64e7);
+        document.getElementById("days").innerHTML = days;
+
+        function days_of_a_year(year) {
+          return isLeapYear(year) ? 366 : 365;
+        }
+
+        function isLeapYear(year) {
+          return year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0);
+        }
+
+        var percent = (
+          (days / days_of_a_year(now.getFullYear())) *
+          100
+        ).toFixed(2);
+
+        document.getElementById("percent").innerHTML = percent;
+
+        function Pie(cx, cy, radius, data) {
+          var decimals = 4;
+          var total = 0;
+          var offset = 0;
+          var offset2;
+          var arr = [];
+          var x;
+          var y;
+          var la;
+          var radians;
+
+          for (var i = 0; i < data.length; i++) total += data[i].value;
+
+          for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            var tmp = {};
+
+            tmp.index = i;
+            tmp.value = item.value;
+            radians = (((item.value / total) * 360 * Math.PI) / 180).floor(
+              decimals
+            );
+            offset2 = ((offset / total) * 360).floor(decimals);
+            tmp.data = item;
+
+            x = (cx + Math.sin(radians) * radius).floor(decimals);
+            y = (cy - Math.cos(radians) * radius).floor(decimals);
+            la = radians > Math.PI ? 1 : 0;
+
+            // Arc
+            tmp.d = "M{0} {1},L{0} {2},A{3} {3},0 {4} 1,{5} {6}Z".format(
+              cx,
+              cy,
+              cy - radius,
+              radius,
+              la,
+              x,
+              y
+            );
+            tmp.transform = "rotate({0}, {1}, {2})".format(offset2, cx, cy);
+
+            // Text
+            x = (cx + (Math.sin(radians / 2) * radius) / 2).floor(decimals);
+            y = (cy - (Math.cos(radians / 2) * radius) / 2).floor(decimals);
+            tmp.text = 'x="{0}" y="{1}" transform="rotate({2},{0},{1})"'.format(
+              x,
+              y,
+              -offset2
+            );
+
+            offset += item.value;
+            arr.push(tmp);
+          }
+
+          return arr;
+        }
+
+        // USAGE
+        (function (svg) {
+          var percentLeft = Number((100 - Number(percent)).toFixed(2));
+          var data = [{ value: Number(percent) }, { value: percentLeft }];
+          var centerX = window.innerWidth < 500 ? 150 : 300;
+          var centerY = 150;
+          var radius = 150;
+          var color = ["#8CC152", "#3BAFDA"];
+
+          var arr = Pie(centerX, centerY, radius, data);
+          for (var i = 0; i < arr.length; i++) {
+            var item = arr[i];
+            svg.asvg(
+              '<g transform="{0}"><path d="{1}" fill="{4}" /><text fill="white" font-size="25" {2}>{3}</text></g>'.format(
+                item.transform,
+                item.d,
+                item.text,
+                item.value,
+                color[i]
+              )
+            );
+          }
+        })($("#svg"));
+      }
+    </script>
+    <script src="https://cdn.componentator.com/spa.min@18.js"></script>
+  </body>
+</html>

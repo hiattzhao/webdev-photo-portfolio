@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127458964-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-127458964-1');
+
+    gtag('config', 'G-P65F7Z32SM');
+  </script>
+
+  <meta charset="UTF-8">
+  <title>Hiatt Zhao | Web Developer &amp; Photographer</title>
+  <meta name="description" content="Hiatt Zhao web development and photography portfolio">
+  <meta name="keywords" content="hiatt, zhao, photo, photography, web, website, design, development, portfolio">
+  <meta name="author" content="Hiatt Zhao">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="js/galleria/galleria.portfolio.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- JS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/prefixfree.min.js"></script>
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Abel|Satisfy" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#featured">
+            <h1>Hiatt Zhao<span class="subhead text-center" aria-hidden="true"><i class="fa fa-code" aria-hidden="true"></i>
+                &plus; <i class="fa fa-camera" aria-hidden="true"></i></span></h1>
+          </a>
+        </div><!-- navbar-header -->
+        <div class="collapse navbar-collapse" id="collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#featured">Home</a></li>
+            <li><a href="#webdev">Web Development</a></li>
+            <li><a href="#photo">Photography</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!-- collapse navbar-collapse -->
+      </div><!-- container -->
+    </nav>
+
+    <div class="carousel fade" data-ride="carousel" id="featured">
+
+      <ol class="carousel-indicators">
+      </ol>
+
+      <div class="carousel-inner fullheight">
+        <div class="item"><img src="images/desktop-2000.jpg" alt="photo of my desktop"></div>
+        <div class="item"><img src="images/self-2000.jpg" alt="self portrait"></div>
+        <div class="item"><img src="images/bicycle-2000.jpg" alt="bicycle in Beijing"></div>
+        <div class="item"><img src="images/nyc-2000.jpg" alt="building reflection in new york city"></div>
+      </div><!-- carousel-inner -->
+
+      <a class="left carousel-control" href="#featured" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#featured" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div><!-- featured carousel -->
+  </header>
+
+  <main>
+    <section class="page" id="webdev">
+      <div class="content container">
+        <h1>Web Development</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2021Godcoin-600.jpg" alt="Godcoin" />
+                  <div class="caption">
+                    <p>JavaScript</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    I created a "cryptocurrency" called Godcoin in 2021. (It's a joke. LOL!) <a href="apps/godcoin/index.html" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Godcoin -->
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2020CovidMap-600.jpg" alt="Covid Map" />
+                  <div class="caption">
+                    <p>Python</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    I wanted to make a Covid world map in May of 2020 with Python. Here it is. <a href="apps/corona_virus_cases.html" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End Covid Map -->
+        </div> <!-- End row -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2019InvestmenTrax-600.jpg" alt="InvestmenTrax" />
+                  <div class="caption">
+                    <p>PHP, SQL Server</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    In 2019, using PHP and SQL Server, I built additional features for a financial website where the user can add financial accounts, loan accounts, batch upload a CSV file to directly insert data into the database, and generate PDF reports.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div><!-- End InvestmenTrax -->
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2016AE_Inbox-600censored.jpg" alt="AE Inbox" />
+                  <div class="caption">
+                    <p>AngularJS, Bootstrap, Oracle</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    From 2016 through 2018, as part of a development team, I created a web application similiar to Microsoft Outlook to integrate with a larger suite of applications that involved adverse events. The application takes in emails that are sent to a particular email address and the user is able to process the email to determine its adverse event status. This email application then transfers the process to another staging application built by another team member.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End AE Inbox -->
+        </div> <!-- End row -->
+        <div class="row">
+          <div class="col-md-6">
+              <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+                <div class="flipper">
+                  <div class="front">
+                    <img src="images/websites/2017CAF-600censored.jpg" alt="CAF" />
+                    <div class="caption">
+                      <p>AngularJS, Bootstrap, SQL Server</p>
+                    </div>
+                  </div>
+                  <div class="back">
+                    <p>
+                      In a span of a few months in 2017, I created a file upload application that allowed a branch of the US government to archive its files. There were several pages to the application, including a front-facing page for the initial file upload, a page to view a dashboard of all the files, and another page to search the files by type.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div> <!-- End CAF -->
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2018pool_app-600.jpg" alt="pool app" />
+                  <div class="caption">
+                    <p>React</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    To learn React in 2018, I built a pool score tracking app in two days. <a href="apps/pool-app/index.html" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End Pool App -->
+        </div> <!-- End row -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2015dbsa-600.jpg" alt="depression bipolar support alliance of lehigh valley website" />
+                  <div class="caption">
+                    <p>WordPress</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    Being the web master of a non-profit organization from 2014 through 2020, I set up the domain and hosted a WordPress website using a third party service. I also customized the layout using a template and provided the content.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End DBSA -->
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2014HiattZhaoPhoto-600.jpg" alt="hiatt zhao photography website 2014" />
+                  <div class="caption">
+                    <p>HTML, CSS, JavaScript</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    This was my photography portfolio from 2010 to 2013. I used the galleria plugin to view the photos as a slide show and integrated a social media sharing feature. The website also contained a contact form.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End Hiatt Zhao Photography-->
+        </div> <!-- End row -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2013mtaa-600.jpg" alt="moore township athletic association website" />
+                  <div class="caption">
+                    <p>PHP, MySQL</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    In 2012, working as a member of a four person team, I helped to create a content management website for a local sports association. While giving support to the lead developer, I utilized my skills in PHP and MySQL to get the project complete in time.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End MTAA -->
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2012nlhs-600.jpg" alt="northern lehigh historical society website" />
+                  <div class="caption">
+                    <p>HTML, CSS, jQuery</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    As the team lead, I designed the layout and provided the majority of the code for a non-profit organization. The organization enjoyed the website experience and the website has attracted many members since 2011.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div> <!-- End NLHS -->
+        </div> <!-- End row -->
+        <div class="row">
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2016timer-600.jpg" alt="timer app" />
+                  <div class="caption">
+                    <p>JavaScript</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    I built a simple timer app using pure JavaScript in 2016. <a href="apps/timer.html" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="portfolio" ontouchstart="this.classList.toggle('hover');">
+              <div class="flipper">
+                <div class="front">
+                  <img src="images/websites/2016todo_list-600.jpg" alt="todo list app" />
+                  <div class="caption">
+                    <p>JavaScript</p>
+                  </div>
+                </div>
+                <div class="back">
+                  <p>
+                    In the summer of 2016, I wanted to practice coding with JavaScript so I created a todo list. This app also uses a quotation API. <a href="apps/to-do-list.html" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i> Live Site</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- End content container -->
+    </section><!-- End webdev page -->
+
+    <section class="page" id="photo">
+      <div class="content container">
+        <h1>Photography</h1>
+        <div class="row">
+          <div id="galleria"></div>
+        </div><!-- row -->
+      </div><!-- content container -->
+    </section><!-- photo page -->
+
+    <section class="page" id="about">
+      <div class="container-fluid">
+        <h1>About</h1>
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-1">
+            <img class="avatar" src="images/hiatt.jpg" alt="hiatt zhao portrait" />
+          </div>
+          <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-5 col-lg-offset-1">
+            <p class="bio">
+              <b>I'm a curious creature</b> who enjoys problem solving and design. The web is the perfect playground for me to learn and create. I'm a self starter and a motivated team player.
+            </p>
+            <p class="bio">
+              <b>Aside from web development</b> and photography, I also like to read, write, build Raspberry Pi projects, and play the guitar.
+            </p>
+            <p class="bio">
+              <b>We are all creators</b> changing the world. Together, we can do great things.
+            </p>
+          </div>
+        </div><!-- outer row -->
+      </div><!-- container -->
+    </section><!-- about page -->
+
+    <section class="page" id="contact">
+      <div class="container-fluid">
+        <h1>Contact</h1>
+        <div class="row">
+          <ul class="social">
+            <li class="email"><a href="mailto:hiattzhao@gmail.com" target="_blank"><i class="fa fa-envelope-square fa-lg"
+                aria-hidden="true"></i></a></li>
+            <li class="facebook"><a href="https://www.facebook.com/hiattzhao" target="_blank"><i class="fa fa-facebook-square fa-lg"
+                  aria-hidden="true"></i></a></li>
+            <li class="twitter"><a href="https://twitter.com/hiattzhao" target="_blank"><i class="fa fa-twitter-square fa-lg" aria-hidden="true"></i></a></li>
+            <li class="instagram"><a href="https://www.instagram.com/hiattzhao/" target="_blank"><i class="fa fa-instagram fa-lg"
+                  aria-hidden="true"></i></a></li>
+            <li class="linkedin"><a href="https://www.linkedin.com/in/hiattzhao" target="_blank"><i class="fa fa-linkedin-square fa-lg"
+                  aria-hidden="true"></i></a></li>
+            <li class="github"><a href="https://github.com/hiattzhao" target="_blank"><i class="fa fa-github-square fa-lg"
+                  aria-hidden="true"></i></a></li>
+            <li class="vimeo"><a href="https://vimeo.com/hiattzhao/" target="_blank"><i class="fa fa-vimeo-square fa-lg"
+                  aria-hidden="true"></i></a></li>
+          </ul>
+        </div><!-- row -->
+      </div><!-- container -->
+    </section><!-- contact page -->
+  </main><!-- main -->
+
+  <footer>
+    <div class="content container-fluid">
+      <div class="row">
+        <div class="col-sm-12">
+          <p id="copyright">
+            Made with <i class="fa fa-heart"></i> by Hiatt Zhao 2016-2022
+          </p>
+        </div><!-- col-sm-12 -->
+      </div><!-- row -->
+    </div><!-- content container -->
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+  <script src="js/galleria-1.4.2.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    var imageLocation = 'images/photos/';
+    var thumbLocation = imageLocation + 'thumbs/';
+    var bigLocation = imageLocation;
+    var imagePrefix = 'photo';
+    var totalImages = 75;
+    
+    var data = [];
+
+    for (var i = 1; i <= totalImages; i++) {
+      if (i < 10) {
+        i = '0' + i;
+      }
+      data.push({
+        image : imageLocation + imagePrefix + i + '.jpg',
+        thumb : thumbLocation + imagePrefix + i + '-thumb.jpg',
+        big : imageLocation + imagePrefix + i + '.jpg',
+        title: 'photo #' + i,
+        description: 'none'
+      });
+    }
+    // Load the custom theme
+    Galleria.loadTheme('js/galleria/galleria.portfolio.js');
+    // Configure Galleria
+    Galleria.configure({
+      showInfo: true
+    });
+    // Initialize Galleria
+    Galleria.run('#galleria', {
+      dataSource: data
+    });
+  </script>
+</body>
+
+</html>

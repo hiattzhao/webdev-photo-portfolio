@@ -1,0 +1,393 @@
+/**  Basic Page CSS **/
+body{
+  font-family: "Abel", sans-serif;
+  font-weight: 300;
+  font-size: 2em;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Satisfy", sans-serif;
+  font-weight: 100;
+  margin: 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+/**  Header Navigation **/
+
+header .navbar {
+  padding: 30px 0;
+  transition: all .5s ease-out;
+}
+
+header .navbar-default {
+  background-color: transparent;
+  border: none;
+}
+
+header .navbar-default .navbar-nav a {
+  color: white;
+  padding: 5px 8px;
+}
+
+header .navbar-default .navbar-nav a:hover,
+header .navbar-default .navbar-nav a:focus {
+  color: #3A1400;
+}
+
+header .navbar-default .navbar-nav .active a {
+  font-weight: 700;
+  color: #3A1400;
+  background: transparent;
+  border-bottom: 4px solid #3A1400;
+  text-shadow: none;
+}
+
+header .navbar-default .navbar-nav .active a:hover,
+header .navbar-default .navbar-nav .active a:focus
+ {
+  color: #873002;
+  background: transparent;
+  text-shadow: none;
+}
+
+/**  Navbar Brand **/
+
+header .navbar-brand {
+  background: url(../images/logo.gif);
+  background-repeat: no-repeat;
+  background-position: 15px 0;
+  height: auto;
+}
+
+header .navbar-brand h1 {
+  color: white;
+  text-shadow: 1px 1px 18px rgba(150, 150, 150, 1);
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 400;
+  padding-left: 90px;
+}
+
+header .navbar-brand span.subhead {
+  display: block;
+  font-family: "Abel", serif;
+  font-size: .6em;
+  font-weight: 100;
+}
+
+/**  Navbar Toggle **/
+header .navbar-toggle {
+  background-color: #7accc8;
+}
+
+header .navbar-default .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+@media only screen
+and (max-width: 768px) {
+  header .navbar-collapse.in {
+    background-color: rgba(0,0,0, .5);
+  }
+
+  header .navbar-default .navbar-nav .active a {
+    border: none;
+  }
+
+  #collapse ul li a {
+    margin: 12px;
+  }
+
+  #collapse ul li a:hover,
+  #collapse ul li a:focus {
+    background-color: white;
+  }
+
+  #collapse ul li.active a {
+    background-color: white;
+  }
+}
+
+/**  nav inbody **/
+
+header .inbody {
+  background: rgba(2, 135, 128, .9);
+}
+
+header .navbar.inbody {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+header .navbar.inbody .navbar-nav {
+  padding-top: 10px;
+}
+
+header .inbody .navbar-brand {
+  background-size: 43px;
+  background-position: top left;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+header .inbody .navbar-brand h1 {
+  font-size: 1.1em;
+  padding-left: 38px;
+}
+
+header .inbody .navbar-brand span.subhead {
+  display: none;
+}
+
+/**  Carousel Fade **/
+
+.carousel.fade {
+  opacity: 1;
+}
+
+.carousel.fade .item {
+  transition: opacity ease-out .7s;
+  left: 0;
+  opacity: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  display: block;
+}
+
+.carousel.fade .item:first-child {
+  top: auto;
+  opacity: 0;
+  position: relative;
+}
+
+.carousel.fade .item.active {
+  opacity: 1;
+}
+
+.carousel-control {
+  opacity: 0;
+}
+
+.carousel-control.right,
+.carousel-control.left {
+  background-image: none;
+}
+
+#featured .item {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+}
+
+
+/**  Page **/
+.page {
+  padding: 50px 0;
+}
+
+.page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/**  Page -- Web Development **/
+#webdev {
+  background-color: #e6edec;
+  border-top: 20px solid rgba(122, 204, 200, .5);
+}
+
+.portfolio {
+  perspective: 1000px;
+}
+
+.portfolio:hover .flipper, .portfolio.hover .flipper {
+  transform: rotateY(180deg);
+}
+
+.portfolio, .front, .back {
+	width: 500px;
+	height: 375px;
+}
+
+.flipper {
+	transition: 0.5s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+  left: 0;
+}
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+.front > img {
+  box-shadow: 0px 0px 20px 0px rgba(179,179,179,1);
+  border: 5px solid white;
+  width: 100%;
+}
+
+.back > p {
+  padding: 2em;
+  background: white;
+}
+
+.caption {
+  background: rgba(0,0,0,0.5);
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: left;
+  padding: 0 1em 0 1em;
+}
+
+.caption > p {
+  margin: 0;
+  padding: 0;
+}
+
+/**  Page -- Photography **/
+
+#galleria {
+  height:800px;
+}
+
+.galleria-info-link {
+  display: none;
+}
+
+/**  Page -- About **/
+
+#about {
+  background-color: #e6edec;
+}
+
+.bio {
+  font-size: 1em;
+}
+
+.avatar {
+  border-radius: 50%;
+  border: 5px solid #fff;
+}
+
+.bio {
+  font-size: 1.5em;
+}
+
+/**  Page -- Contact **/
+
+ul.social {
+  display: block;
+  margin: 5% 0;
+  list-style-type: none;
+  text-align: center;
+}
+
+ul.social li {
+  font-size: 3em;
+  display: inline;
+  padding: 0 2%;
+}
+
+ul.social li a{
+  color: #666;
+}
+
+ul.social li.email a:hover {
+  color: rgb(2, 135, 128);
+}
+
+ul.social li.facebook a:hover {
+  color: rgb(59,89,152);
+}
+
+ul.social li.twitter a:hover {
+  color: rgb(0,172,237);
+}
+
+ul.social li.instagram a:hover {
+  color: rgb(81,127,237);
+}
+
+ul.social li.linkedin a:hover {
+  color: rgb(59,89,152);
+}
+
+ul.social li.github a:hover {
+  color: rgb(251,126,42);
+}
+
+ul.social li.vimeo a:hover {
+  color: rgb(68,85,102);
+}
+
+/**  Footer **/
+
+footer {
+  background: #7accc8;
+  color: white;
+  font-size: .8em;
+  padding: 20px 0 40px 0;
+}
+
+#copyright {
+  text-align: center;
+}
+
+/** Media Queries **/
+/* Larger than mobile */
+@media (max-width: 479px) {
+  .caption {
+    font-size: 1em;
+  }
+  .bio {
+    font-size: 1em;
+  }
+}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {
+  .caption {
+    font-size: 1.2em;
+  }
+}
+
+/* Larger than tablet */
+@media (min-width: 800px) {
+  .caption {
+    font-size: 1.4em;
+  }
+}
+
+/* Larger than desktop */
+@media (min-width: 1200px) {
+  .caption {
+    font-size: 1.6em;
+  }
+}

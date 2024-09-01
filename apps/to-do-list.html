@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>Daily To Do List</title>
+  <meta name="description" content="A daily to do list made with JavaScript">
+  <meta name="author" content="Hiatt Zhao">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <style>
+  @media (min-width: 1000px) {
+    .container {
+      margin: auto;
+      width: 50%;
+    }
+  }
+  /* Larger than mobile */
+  @media (max-width: 479px) {
+    h1 {
+      font-size: 3em;
+    }
+  }
+
+    span.fa {
+      margin-right: 0.5em;
+    }
+
+    .items p {
+      display: inline;
+      padding-left: 10px;
+    }
+  </style>
+
+</head>
+
+  <body>
+    <div class="container">
+      <div class="column">
+        <h1>Daily To Do List</h1>
+        <h3 id="date" class="left-align"></h3>
+        <p>
+          <!-- Quotes -->
+          <script type="text/javascript" src="https://www.brainyquote.com/link/quotebr.js"></script>
+          <small><i><a href="https://www.brainyquote.com/quotes_of_the_day.html" target="_blank">more Quotes</a></i></small>
+        </p>
+          <input type="text" name="location" id="location" placeholder="location">
+          <button type="button" name="getWeather" id="getWeather">Get Weather</button>
+          <p id="weatherMessage"></p>
+          <div id="weather" class="left-align"></div>
+        <input type="text" name="item" id="item" placeholder="item">
+        <button type="button" name="button" id="addItem">Add Item</button>
+        <p id="itemMessage"></p>
+        <p><span class="fa fa-warning"></span>Don't close this window or else your list will be cleared!</p>
+        <ul id="itemList">
+        </ul>
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    //sets the date to today's date inside the title id
+    var date = new Date();
+    var todayDate = date.toLocaleDateString();
+    document.getElementById('date').textContent = todayDate;
+
+
+    var item = document.getElementById('item');
+    var message = document.getElementById('message');
+
+    //check to see if anything is in the textbox
+    function checkItem(id, input) {
+      var id;
+      var input;
+      if (!input.value) { //if there are no text in the textbox
+        id.textContent = 'Please input ' + input + '.'; //show an error message
+      }
+    }
+
+    //add an item to the unordered list
+    function addItem() {
+      if (item.value) { //if there is text in the textbox
+        var li = document.createElement('li'); //create a li element
+        var deleteButton = document.createElement('button'); //create a button element
+        var p = document.createElement('p'); //create a paragraph element
+        deleteButton.setAttribute('type', 'button'); //set button as the type attribute
+        deleteButton.textContent = 'Delete'; //set Delete as the button text
+        deleteButton.setAttribute('onclick', 'deleteItem();');
+        p.textContent = item.value; //set the paragraph as the text in the textbox
+        li.setAttribute('class', 'items'); //set items as the class attribute in the list
+        li.appendChild(deleteButton); //add button in the list node
+        li.appendChild(p);  //add paragraph in the list node
+        document.getElementById('itemList').insertBefore(li, document.getElementById('itemList').firstChild); //add the current item to the top of the list of items
+        item.value = ""; //clear the textbox
+        itemMessage.textContent=""; //clear the error message
+      }
+    }
+
+    //delete a list item
+    function deleteItem(e) {
+      if (!e) {
+        e = window.event;
+      }
+      var elParent = e.target.parentNode;
+      elParent.parentNode.removeChild(elParent);
+    }
+
+    //add item if Enter key is pressed while cursor is in textbox
+    item.addEventListener("keydown", function(e) {
+      if (!e) {
+        var e = window.event;
+      }
+      if (e.keyCode == 13) { //if enter key is pressed
+        checkItem(itemMessage, "item");
+        addItem();
+      }
+    }, false);
+
+    //when Add Item button is pressed
+    document.getElementById('addItem').onclick = function() {
+      checkItem(itemMessage, "item");
+      addItem();
+    };
+
+    //Weather app
+    function getWeather() {
+      var location = $('#location').val();
+      $.get('https://query.yahooapis.com/v1/public/yql?q=select * from weather.forecast where woeid in (select woeid from geo.places(1) where text="' + location + '")&format=json&env=store//datatables.org/alltableswithkeys', function (data) {
+          //grab the location
+          if (data.query.results === null) {
+              $('#weatherMessage').html("Location not found.");
+          } else {
+              $('#weather').html('<h4 class="left-align">' + data.query.results.channel.location.city + ', ' + data.query.results.channel.location.region + ', ' + data.query.results.channel.location.country + '</h4><h5>Current temperature: ' + data.query.results.channel.item.condition.temp + '&deg;F</h5><p>Condition: ' + data.query.results.channel.item.condition.text + '</p><p>Sunrise: ' +  data.query.results.channel.astronomy.sunrise + '<br />Sunset: ' + data.query.results.channel.astronomy.sunset + '</p>');
+              $('#weatherMessage').html("");
+          }
+        });
+    }
+
+    //when Get Weather button is pressed
+    document.getElementById('getWeather').onclick = function() {
+      getWeather();
+    };
+    //get weather if Enter key is pressed while cursor is in textbox
+    document.getElementById('location').addEventListener("keydown", function(e) {
+      if (!e) {
+        var e = window.event;
+      }
+      if (e.keyCode == 13) { //if enter key is pressed
+        getWeather();
+      }
+    }, false);
+
+    </script>
+  </body>
+</html>
